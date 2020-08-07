@@ -545,6 +545,18 @@ class WordCloud(object):
                                 orientations, colors))
         return self
 
+    def get_word_by_color(self,rgb):
+        if all(rgb==255):
+            return None
+        selected = None
+        for wordlayout in self.layout_:
+            word,scale = wordlayout[0]
+            wordcolor = wordlayout[4]
+            if wordcolor == 'rgb({:d}, {:d}, {:d})'.format(*rgb):
+                selected = word
+                break
+        return selected
+
     def process_text(self, text):
         """Splits a long text into words, eliminates the stopwords.
 
