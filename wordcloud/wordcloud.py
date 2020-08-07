@@ -546,7 +546,7 @@ class WordCloud(object):
         return self
 
     def get_word_by_color(self,rgb):
-        if all(rgb==255):
+        if rgb == ImageColor.getcolor(self.background_color,mode='RGB'):
             return None
         selected = None
         for wordlayout in self.layout_:
